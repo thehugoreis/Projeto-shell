@@ -1,0 +1,1 @@
+echo 'opc2 ok'
