@@ -27,7 +27,8 @@ else
     nuser=$(dialog --stdout --title 'Usuário' --inputbox 'Digite o nome do usuário que deve ter acesso a pasta:')    
     clear
     echo 'Digite a baixo a senha para o usuario'
-    smbpasswd -a $nuser
+    dialog --stdout --title 'Senha do usuário' \
+    --inputbox 'Digite a senha para o usuário do compartilhamento' 0 0 | smbpasswd -a -s $nuser
     
     comment=$(dialog --stdout --title 'Comentaário' --inputbox 'Insira um comentário para o compartilhamento' 0 0)
 
