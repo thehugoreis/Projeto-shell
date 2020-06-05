@@ -7,7 +7,7 @@ nomepasta=$( dialog --stdout\
  --inputbox 'Infomre o nome da nova pasta que deve ser criada e compartilhada: ' \
  0 0)
 
-if ( echo "$OPC" | grep -q '' ); then
+if ( echo "$nomepasta" | grep -q '' ); then
         echo 'ERRO: Nome da pasta contém espaços
 		inválido'
         exit 1
