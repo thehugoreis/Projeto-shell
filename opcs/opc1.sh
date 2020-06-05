@@ -12,6 +12,34 @@ if ( echo "$OPC" | grep -q '' ); then
 		inválido'
         exit 1
 else
-	#criando o compartilhamento
+	CAM="/etc/samba/smb.conf"
+    #Primeiro passo - Nome do compartilhamento - local - usuario - criando a pasta
+    usuarioatual=$(who | cut -d" " -f1)
     
+    npasta=$(dialog --stdout --title 'Nome da pasta' \
+    --inputbox "Olá $usuarioatual. Digite o caminho completo e nome para a nova pasta. EX: /home/nomeusuario/pasta" 0 0)
+    mkdir $npasta
+    chmod o+w $npasta
+
+    npastacimples=$(dialog --stdout --title 'Nome do compartilhamento' \
+    --inputbox 'Digite o nome da pasta que aparecera como compartilhada. EX: Pasta' 0 0)
+    
+    nuser=$(dialog --stdout --title 'Usuário' --inputbox 'Digite o nome do usuário que deve ter acesso a pasta:')    
+    clear
+    echo 'Digite a baixo a senha para o usuario'
+    smbpasswd -a $nuser
+    
+    comment=$(dialog --stdout --title 'Comentaário' --inputbox 'Insira um comentário para o compartilhamento' 0 0)
+
+    #Segundo passo - estrutura do compartilhamento no smb.conf
+    echo "[$npastasimples]
+        comment=$comment
+        path=$npasta
+        browseable=yes
+        writeable=yes
+        allow users=$nuser" >> /etc/samba/smb.conf 
+    dialog --title 'Resultado final no smb.conf' --textbox /etc/samba/smb.conf 0 0
+    sudo systemctl reboot smbd
+    clear
+    sudo systemctl status smbd 
 fi

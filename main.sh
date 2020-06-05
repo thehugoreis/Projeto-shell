@@ -1,6 +1,7 @@
+#!/bin/bash
 #Menu principal do projeto
 #ver 1.0
-#!/bin/bash
+sudo su
 
 OPC=$(dialog --stdout\
    --title 'Menu principal'\
