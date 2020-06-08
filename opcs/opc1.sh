@@ -29,9 +29,14 @@ else
     #clear
     #echo 'Digite a baixo a senha para o usuario'
     #dialog --stdout --title 'Senha do usuário' --inputbox 'Digite a senha para o usuário do compartilhamento' 0 0
-    dialog --msgbox 'Clique em OK e insira a baixo senha para o usuário do compartilhamento' 10 100
-    clear
-    smbpasswd -a -s $nuser
+    #dialog --msgbox 'Clique em OK e insira a baixo senha para o usuário do compartilhamento' 10 100
+    #clear
+    #smbpasswd -a -s $nuser
+
+    nsenha=$(dialog --stdout --title "Senha para o usuário $nuser" --inputbox \
+	    'Digite uma senha para o usuário do compartilhamento:' 0 0)
+    echo -e "$nsenha\n$nsenha\n\n\n\n\ny\n" | adduser $nuser
+    echo -e "$nsenha\n$nsenha" | smbpasswd -a -s $nuser
     
     comment=$(dialog --stdout --title 'Comentaário' --inputbox 'Insira um comentário para o compartilhamento' 0 0)
 
@@ -45,5 +50,11 @@ else
     dialog --title 'Resultado final no smb.conf' --textbox /etc/samba/smb.conf 0 0
     sudo systemctl restart smbd
     clear
-    sudo systemctl status smbd 
+    sudo systemctl status smbd > smb-status.txt
+    dialog --textbox smb-status.txt 0 0
+    #senhadogrupo=$(dialog --title 'Informe a senha do grupo de trabalho' \
+#	    --inputbox 'Essa senha é geralmente a senha de root' 0 0)
+    echo -e "\n" | smbclient -L localhost > status-smbclient.txt
+    dialog --textbox status-smbclient.txt 0 0
+    clear
 fi

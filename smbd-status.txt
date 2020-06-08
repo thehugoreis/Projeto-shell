@@ -1,0 +1,24 @@
+● smbd.service - Samba SMB Daemon
+     Loaded: loaded (/lib/systemd/system/smbd.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2020-06-08 20:44:52 UTC; 16min ago
+       Docs: man:smbd(8)
+             man:samba(7)
+             man:smb.conf(5)
+    Process: 2438 ExecStartPre=/usr/share/samba/update-apparmor-samba-profile (code=exited, status=0/SUCCESS)
+   Main PID: 2448 (smbd)
+     Status: "smbd: ready to serve connections..."
+      Tasks: 4 (limit: 1074)
+     Memory: 8.0M
+     CGroup: /system.slice/smbd.service
+             ├─2448 /usr/sbin/smbd --foreground --no-process-group
+             ├─2450 /usr/sbin/smbd --foreground --no-process-group
+             ├─2451 /usr/sbin/smbd --foreground --no-process-group
+             └─2453 /usr/sbin/smbd --foreground --no-process-group
+
+Jun 08 20:44:51 serv2 systemd[1]: Starting Samba SMB Daemon...
+Jun 08 20:44:52 serv2 systemd[1]: Started Samba SMB Daemon.
+Jun 08 20:45:32 serv2 smbd[2496]: pam_unix(samba:session): session closed for user nobody
+Jun 08 20:46:04 serv2 smbd[2503]: pam_unix(samba:session): session closed for user nobody
+Jun 08 20:46:33 serv2 smbd[2505]: pam_unix(samba:session): session closed for user nobody
+Jun 08 20:57:23 serv2 smbd[2628]: pam_unix(samba:session): session closed for user nobody
+Jun 08 20:57:57 serv2 smbd[2633]: pam_unix(samba:session): session closed for user nobody
