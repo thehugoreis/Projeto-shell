@@ -1,0 +1,3 @@
+Enabling site sitetres.local.
+To activate the new configuration, you need to run:
+  systemctl reload apache2

@@ -7,10 +7,10 @@
 # --inputbox 'Infomre o nome da nova pasta que deve ser criada e compartilhada: ' \
 # 0 0)
 
-usuarioatual=$(who | cut -d" " -f1)
+#usuarioatual=$(who | cut -d" " -f1)
 
 npasta=$(dialog --stdout --title 'Nome da pasta' \
---inputbox "Olá $usuarioatual. Digite o caminho completo e nome para a nova pasta. EX: /home/nomeusuario/pasta" 15 100)
+--inputbox "Olá $USER. Digite o caminho completo e nome para a nova pasta. EX: /home/nomeusuario/pasta" 15 100)
 
 if ( echo "$npasta" | grep -q ' ' ); then
         echo 'ERRO: Nome da pasta contém espaços
