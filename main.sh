@@ -15,6 +15,7 @@ CAM=("opcs/")
 
 case $OPC in
         1) 
+        echo ""
 		echo -n 'Abrindo opção selecionada...'
 		sleep 1 && echo -n "......." && sleep 1 && echo -n "......." && \
 		sleep 1 && echo -n "......." && sleep 1 && echo -n "......." && \
@@ -22,6 +23,7 @@ case $OPC in
 		$CAM/opc1.sh
         ;;
         2) 
+        echo ""
 		echo -n 'Abrindo opção selecionada...'
 		sleep 1 && echo -n "......." && sleep 1 && echo -n "......." && \
 		sleep 1 && echo -n "......." && sleep 1 && echo -n "......." && \
@@ -29,6 +31,7 @@ case $OPC in
 		$CAM/opc2.sh
 		;;
         3) 
+        echo ""
 		echo -n 'Abrindo opção selecionada...'
 		sleep 1 && echo -n "......." && sleep 1 && echo -n "......." && \
 		sleep 1 && echo -n "......." && sleep 1 && echo -n "......." && \
