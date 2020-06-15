@@ -12,10 +12,18 @@
 npasta=$(dialog --stdout --title 'Nome da pasta' \
 --inputbox "Olá $USER. Digite o caminho completo e nome para a nova pasta. EX: /home/nomeusuario/pasta" 15 100)
 
-if ( echo "$npasta" | grep -q ' ' ); then
+if [ -z $npasta ]; then
+        clear
         echo 'ERRO: Nome da pasta contém espaços
 		inválido'
         exit 1
+
+elif [ grep -q " " $npasta ]; then
+        clear
+        echo 'ERRO: Nome da pasta contém espaços
+		inválido'
+        exit 1
+        
 else
 	CAM="/etc/samba/smb.conf"
     #Primeiro passo - Nome do compartilhamento - local - usuario - criando a pasta
