@@ -3,7 +3,7 @@
 
 apNpasta=$(dialog --stdout --title 'Nome da pasta' --inputbox 'Informe o nome da pasta para o site: Ex: site.com' 0 0)
 mkdir -p /var/www/$apNpasta
-dialog --msgbox "Uma pagina inicial com o nome index.html será criada dentro do diretório $apNpasta" 0 0
+dialog --msgbox "Uma pagina inicial com o nome index.html será criada dentro do diretório $apNpasta" 10 50
 echo "<html>
   <head>
     <title>Site $apNpasta </title>
@@ -16,8 +16,8 @@ dialog --title 'Arquivo index.html da pagina' --textbox /var/www/$apNpasta/index
 
 dialog --msgbox 'Informe os dados para o arquivo que cria o host virtual do site' 0 0
 
-apSadmin=$(dialog --stdout --title 'ServerAdmin' --inputbox 'Informe o ServerAdmin: Ex: admin@exemplo.com' 0 0)
-apSname=$(dialog --stdout --title 'ServerName' --inputbox 'Informe o nome do serivor: Ex: exemplo.com' 0 0)
+apSadmin=$(dialog --stdout --title 'ServerAdmin' --inputbox 'Informe o ServerAdmin: Ex: admin@exemplo.com' 10 60)
+apSname=$(dialog --stdout --title 'ServerName' --inputbox 'Informe o nome do servidor: Ex: exemplo.com' 10 60)
 
 echo "<VirtualHost *:80>
     ServerAdmin $apSadmin
@@ -45,12 +45,12 @@ dialog --testbox status-apache2.txt 0 0
 #    dialog --msgbox 'Não adicionado - Programa finalizado' 0 0
 #fi
 
-dialog --yesno 'Deseja abri o site criado agora no firefox?' 0 0
+dialog --yesno 'Deseja abri o site criado agora no firefox?' 5 50
 
 if [ $? = 0 ]; then
     firefox localhost/$apNpasta &
-    dialog --msgbox 'Abrindo link no browser' 0 0
+    dialog --msgbox 'Abrindo link no browser' 5 50
 else
-    dialog --msgbox 'ok, finalizando programa' 0 0
+    dialog --msgbox 'ok, finalizando programa' 5 50
 fi
 clear

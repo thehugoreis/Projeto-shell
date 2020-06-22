@@ -27,7 +27,7 @@ else
     npastasimples=$(dialog --stdout --title 'Nome do compartilhamento' \
     --inputbox 'Digite o nome da pasta que aparecera como compartilhada. EX: Pasta' 0 0)
     
-    nuser=$(dialog --stdout --title 'Usuário' --inputbox 'Digite o nome do usuário que deve ter acesso a pasta:' 0 0)    
+    nuser=$(dialog --stdout --title 'Usuário' --inputbox 'Digite o nome do usuário que deve ter acesso a pasta:' 10 60)    
     #clear
     #echo 'Digite a baixo a senha para o usuario'
     #dialog --stdout --title 'Senha do usuário' --inputbox 'Digite a senha para o usuário do compartilhamento' 0 0
@@ -36,11 +36,11 @@ else
     #smbpasswd -a -s $nuser
 
     nsenha=$(dialog --stdout --title "Senha para o usuário $nuser" --inputbox \
-	    'Digite uma senha para o usuário do compartilhamento:' 0 0)
+	    'Digite uma senha para o usuário do compartilhamento:' 10 60)
     echo -e "$nsenha\n$nsenha\n\n\n\n\ny\n" | adduser $nuser
     echo -e "$nsenha\n$nsenha" | smbpasswd -a -s $nuser
     
-    comment=$(dialog --stdout --title 'Comentaário' --inputbox 'Insira um comentário para o compartilhamento' 0 0)
+    comment=$(dialog --stdout --title 'Comentaário' --inputbox 'Insira um comentário para o compartilhamento' 10 60)
 
     #Segundo passo - estrutura do compartilhamento no smb.conf
     echo "[$npastasimples]
