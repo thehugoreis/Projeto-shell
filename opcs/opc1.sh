@@ -17,12 +17,6 @@ if [ -z $npasta ]; then
         echo 'ERRO: Nome da pasta contém espaços
 		inválido'
         exit 1
-
-elif [ grep -q " " $npasta ]; then
-        clear
-        echo 'ERRO: Nome da pasta contém espaços
-		inválido'
-        exit 1
         
 else
 	CAM="/etc/samba/smb.conf"
