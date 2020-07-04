@@ -11,4 +11,5 @@ smbNnome=$(dialog --stdout --title 'Nome do compartilhamento' --inputbox 'Inform
 smbNuser=$(dialog --stdout --title 'Usuario' --inputbox 'Informe o nome do usuário para acesso:' 10 45)
 smbNsenha=$(dialog --stdout --title 'Senha' --passwordbox 'Informe  a senha do compartilhamento' 10 40)
 echo ""
+clear
 smbclient -U $smbNuser%$smbNsenha //$smbNip/$smbNnome
